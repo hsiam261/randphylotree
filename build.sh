@@ -1,5 +1,6 @@
 #!/bin/bash 
 
+mkdir -p lib/yaml-cpp 
 
 cd external-libs/yaml-cpp
 mkdir -p build
