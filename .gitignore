@@ -1,2 +1,7 @@
 external-libs/**
 outputs/**
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+generate-random-tree
