@@ -64,5 +64,5 @@ It will create a single executable named `generate-random-tree`.
 
 ## Run
 ```
-./generate-random-tree` yaml-config output-file|output-file-prefix
+./generate-random-tree yaml-config output-file|output-file-prefix
 ```
