@@ -209,6 +209,15 @@ void generate_tree(const Arguments& args, string output_file) {
 	cout << "Generating topology" << endl;
 	tree::generate_random_topology(t, rng);
 	
+	cout << "Generating branch lengths" << endl;
+	if(args.branchLengthDistribution.type == "uniform") {
+		auto gen = uniform_real_distribution<double>(args.branchLengthDistribution.lower, args.branchLengthDistribution.upper);
+		tree::assign_randomized_branch_length(t,gen, rng);
+	} else if(args.branchLengthDistribution.type == "normal") {
+		auto gen = normal_distribution<double>(args.branchLengthDistribution.mean, args.branchLengthDistribution.standardDeviation);
+		tree::assign_randomized_branch_length(t,gen, rng);
+	}
+
 	if(lamda != -1 || m != -1 || mu != -1) {
 		cout << "Generating kword-counts" << endl;
 		vector<int> initial_state(NUMBER_OF_SITES);
@@ -219,15 +228,7 @@ void generate_tree(const Arguments& args, string output_file) {
 		tree::generate_kword_counts(t,initial_state,rng);
 	}
 
-	cout << "Generating branch lengths" << endl;
-	if(args.branchLengthDistribution.type == "uniform") {
-		auto gen = uniform_real_distribution<double>(args.branchLengthDistribution.lower, args.branchLengthDistribution.upper);
-		tree::assign_randomized_branch_length(t,gen, rng);
-	} else if(args.branchLengthDistribution.type == "normal") {
-		auto gen = normal_distribution<double>(args.branchLengthDistribution.mean, args.branchLengthDistribution.standardDeviation);
-		tree::assign_randomized_branch_length(t,gen, rng);
-	}
-
+	
 	cout << "Writing to File" << endl;
 	t.write_to_file(output_file);
 	cout << "Done" << endl;
