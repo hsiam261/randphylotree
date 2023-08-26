@@ -9,7 +9,6 @@ on:
         default: 'v0.0.1'
       release_name:
         description: 'Name for the release'
-        default: ${{ github.event.inputs.release_tag }} 
 jobs:
   build:
     name: Build and Release
