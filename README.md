@@ -62,6 +62,22 @@ a_1 a_2 ... a_{NUMBER-OF-SITES} #each line contains a list of NUMBER-OF-SITES sp
 
 It will create a single executable named `generate-random-tree`.
 
+### dev build
+```
+./build.sh
+# This will generate a single executable statically linked
+# in the project root named generate-random-tree
+```
+
+### release build
+```
+./build.sh RELEASE
+# This will generate a directory named release
+# will contain an executable (statically linked)
+# release/generate-random-tree
+# release build has compiler optimization enabled
+```
+
 ## Run
 ```
 ./generate-random-tree yaml-config output-file|output-file-prefix
