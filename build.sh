@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-mkdir -p lib/yaml-cpp 
+git submodule update --init --recursive
 
 cd external-libs/yaml-cpp
 mkdir -p build
