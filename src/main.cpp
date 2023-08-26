@@ -180,11 +180,13 @@ void generate_tree(const Arguments& args, string output_file) {
 		mu = args.mu.mean;
 	} else if(args.mu.type == "normal") {
 		mu = normal_distribution<double>(args.mu.mean, args.mu.standardDeviation)(rng);
+		while(mu < lamda) {
+			mu = normal_distribution<double>(args.mu.mean, args.mu.standardDeviation)(rng);
+		}
 	} else {
-		mu = uniform_real_distribution<double>(args.mu.lower, args.mu.upper)(rng);
+		mu = uniform_real_distribution<double>(max(args.mu.lower, lamda), args.mu.upper)(rng);
 	}
 
-	mu = max(lamda, mu);
 
 	double m;
 	if(args.m.type == "scalar") {
