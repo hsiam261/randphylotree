@@ -16,11 +16,10 @@ cd build
 if [ $1 == "RELEASE" ]
 then
 	cmake .. -DCMAKE_INSTALL_PREFIX=${LIB_ROOT}/yaml-cpp -DCMAKE_BUILD_TYPE=Release
-	cmake --build .
 else
 	cmake .. -DCMAKE_INSTALL_PREFIX=${LIB_ROOT}/yaml-cpp
-	cmake --build . --target install
 fi
+cmake --build . --target install
 
 cd ../../../ 
 
